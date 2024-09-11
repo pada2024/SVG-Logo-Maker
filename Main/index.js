@@ -5,6 +5,8 @@ const cli = new CLI();
 cli.run();
 
 const inquirer = require('inquirer');
+const fs = require('fs');
+
 
 inquirer.prompt([
     {
@@ -57,12 +59,17 @@ inquirer.prompt([
     },
 
     // Add more prompts as needed for installation, usage, etc.
-]).then(answers => {
+])
+
+.then(answers => {
     console.log('Project Title:', answers.title);
     console.log('Project Description:', answers.description);
 
     // Here you can add logic to generate a logo file based on the answers
 });
+
+// Function to create SVG logo
+
 
 
 
