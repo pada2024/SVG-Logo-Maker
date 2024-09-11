@@ -34,7 +34,7 @@ inquirer.prompt([
         type: 'list',
         name: 'shape',
         message: 'Choose a shape for the SVG logo:',
-        choices: ['Polyline','Circle', 'Rectangle'],
+        choices: ['Polyline', 'Circle', 'Rectangle'],
     },
     {
         type: 'input',
@@ -43,12 +43,25 @@ inquirer.prompt([
     },
     {
         type: 'input',
-        name: 'text',
-        message: 'Enter text to display on the logo:',
-    }
-]).then(answers => {
+        name: 'userInput',
+        message: 'Please enter your text (max 50 characters):',
+        validate: function (input) {
+            if (input.length > 3) {
+                return 'Input must be 3 characters or less.';
+            }
+            return true; // Input is valid
+        },
+    },
+]);
+
+inquirer.prompt(questions).then(answers => {
+    console.log(`You entered: ${answers.userInput}`);
+});
+
+.then(answers => {
     const { shape, color, text } = answers;
     const svgLogo = createSvgLogo(shape, color, text);
+function createSvgLogo(answers);
 
     // Save the SVG to a file
     fs.writeFileSync('customLogo.svg', svgLogo);
