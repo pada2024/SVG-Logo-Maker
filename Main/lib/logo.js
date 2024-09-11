@@ -20,7 +20,7 @@ function createSvgLogo(shape, color, text) {
 
     // Create the SVG string with text
     const svgLogo = `
-    <svg width="100" height="100" xmlns="http://www.w3.org/2000/svg">
+    <svg width="300" height="200" xmlns="http://www.w3.org/2000/svg">
         ${shapeElement}
         <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" fill="white" font-size="12">${text}</text>
     </svg>
@@ -61,11 +61,12 @@ inquirer.prompt(questions).then(answers => {
 .then(answers => {
     const { shape, color, text } = answers;
     const svgLogo = createSvgLogo(shape, color, text);
+    
 function createSvgLogo(answers);
 
     // Save the SVG to a file
-    fs.writeFileSync('customLogo.svg', svgLogo);
-    console.log('SVG logo created and saved as customLogo.svg');
+    fs.writeFileSync('logo.svg', svgLogo);
+    console.log('Generated logo.svg');
 }).catch(error => {
     console.error('Error:', error);
 });
