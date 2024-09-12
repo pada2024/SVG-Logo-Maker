@@ -31,7 +31,7 @@ class Rectangle extends Shape {
         return `<rect x="60" y="10" rx="10" ry="10" width="30" height="30" fill="${this.color}" />`;
     }
 }
-//Todo: export Circle, Square and Triangle classes
+//Todo: export Polyline, Circl and Rectangle classes
 module.exports = {
     Polyline,
     Circle,

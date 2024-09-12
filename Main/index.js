@@ -32,7 +32,7 @@ function createSvgLogo(shape, color, text) {
 }
 
 // Prompt the user for shape, color, and text
-inquirer.prompt([
+questions = [
     {
         type: 'list',
         name: 'shape',
@@ -40,15 +40,17 @@ inquirer.prompt([
         choices: ['Polyline', 'Circle', 'Rectangle'],
     },
     {
-        type: 'input',
+        type: 'list',
         name: 'color',
-        message: 'Enter a background color for your SVG logo (e.g., red, #ff0000):',
+        message: 'Enter a background color for your SVG logo (e.g., red, blue, or black):',
+        choices: ['red', 'blue','black'],
     },
 
     {
         type: 'list',
         name: 'Text Color?',
-        list: ['white', 'black']
+        message: 'Choose a text color (e.g., White or Black):',
+        choices: ['white', 'black']
     },
 
     {
@@ -62,26 +64,27 @@ inquirer.prompt([
             return true; // Input is valid
         },
     },
-]);
+];
 
 inquirer.prompt(questions).then(answers => {
     console.log(`You entered: ${answers.userInput}`);
-});
 
-.then(answers => {
     const { shape, color, text } = answers;
     const svgLogo = createSvgLogo(shape, color, text);
+})
+ .catch(error => {
+    console.error('Error:', error);
+});
+   
     
-function createSvgLogo(answers);
+function createSvgLogo(answers){
 
     // Save the SVG to a file
     fs.writeFileSync('logo.svg', svgLogo);
     console.log('Generated logo.svg');
-}).catch(error => {
-    console.error('Error:', error);
-});
+}
 
-function createSvgLogo(answers) {
+// function createSvgLogo(answers) {
     //     console.log(answers);
     
     //     let svgContent = ''
