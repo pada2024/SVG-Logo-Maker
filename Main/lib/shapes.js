@@ -1,10 +1,13 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
 
-/Todo: create a Shape class with color property and setColor method to set color
+
+// /Todo: create a Shape class with color property and setColor method to set color
 class Shape {
-    constructor(color) {
+    constructor(color, text, textcolor) {
         this.color = color;
+        this.text = text;
+        this.textcolor = textcolor;
     }
     setColor(color) {
         this.color = color;
@@ -21,7 +24,13 @@ class Polyline extends Shape {
 //Todo: create Square class that extends Shape and implements render method to return a string representing a square with specified color
 class Circle extends Shape {
     render() {
-        return `<circle cx="25" cy="75" r="20" width="100%" fill="${this.color}" />`;
+        return `<svg version="1.1" width="300" height="200" xmlns="http://www.w3.org/2000/svg">
+
+  <circle cx="150" cy="100" r="80" fill="${this.color}" />
+
+  <text x="150" y="125" font-size="60" text-anchor="middle" fill="${this.textcolor}">${this.text}</text>
+
+</svg>`;
     }
     
 }
@@ -31,7 +40,7 @@ class Rectangle extends Shape {
         return `<rect x="60" y="10" rx="10" ry="10" width="30" height="30" fill="${this.color}" />`;
     }
 }
-//Todo: export Polyline, Circl and Rectangle classes
+//Todo: export Polyline, Circle and Rectangle classes
 module.exports = {
     Polyline,
     Circle,

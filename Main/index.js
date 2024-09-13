@@ -1,5 +1,6 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
+const { Circle } = require('./lib/shapes');
 
 // Function to create an SVG logo based on user input
 function createSvgLogo(shape, color, text) {
@@ -43,12 +44,12 @@ questions = [
         type: 'list',
         name: 'color',
         message: 'Enter a background color for your SVG logo (e.g., red, blue, or black):',
-        choices: ['red', 'blue','black'],
+        choices: ['red', 'blue', 'black'],
     },
 
     {
         type: 'list',
-        name: 'Text Color?',
+        name: 'textcolor',
         message: 'Choose a text color (e.g., White or Black):',
         choices: ['white', 'black']
     },
@@ -67,60 +68,41 @@ questions = [
 ];
 
 inquirer.prompt(questions).then(answers => {
-    console.log(`You entered: ${answers.userInput}`);
 
-    const { shape, color, text } = answers;
-    const svgLogo = createSvgLogo(shape, color, text);
-})
- .catch(error => {
-    console.error('Error:', error);
-});
-   
-    
-function createSvgLogo(answers){
+
+
+
 
     // Save the SVG to a file
-    fs.writeFileSync('logo.svg', svgLogo);
-    console.log('Generated logo.svg');
-}
 
-// function createSvgLogo(answers) {
-    //     console.log(answers);
-    
-    //     let svgContent = ''
-    
-    //     // If user selects Polyline
-    //     if (answers.svgContent === 'Polyline') {
-    //         svgContent = '<polyline points="60, 110 65, 120 70, 115 75, 130 80, 125 85, 140 90, 135 95, 150 100, 145"/>'
-    //     }
-    // // If user selects 
-    //     else if (answers.svgContent === 'Circle') {
-    //         svgContent= '<circle cx="25" cy="75" r="20"/>'
-          
-    //       }
-    
-    //       else if (answers.svgContent === 'Rectangle') {
-    //         svgContent= '<rect x="60" y="10" rx="10" ry="10" width="30" height="30"/>'
-          
-    //       }
-    
-    //     const svgContent = `
-    //         <svg width="100" height="100" xmlns="http://www.w3.org/2000/svg">
-    //         <text x="50%" y="50%" font-size="20" text-anchor="middle" fill="white" dy=".3em">Logo</text>
-    //             <circle cx="50" cy="50" r="40" stroke="black" stroke-width="3" fill="red" />
-    //         </svg>
-    //     `;
-    
-    //     const blob = new Blob([svgContent], { type: 'image/svg+xml' });
-    //     const url = URL.createObjectURL(blob);
-    
-    //     const a = document.createElement('a');
-    //     a.href = url;
-    //     a.download = 'logo.svg';
-    //     document.body.appendChild(a);
-    //     a.click();
-    //     document.body.removeChild(a);
-    // }
-    
-    // // Call the function to create and download the SVG logo
-    // createSvgLogo();
+    const svgLogo = createSvgLogo(answers);
+    console.log('Generated logo.svg', svgLogo);
+    fs.writeFileSync(answers.shape + '.svg', svgLogo);
+})
+    .catch(error => {
+        console.error('Error:', error);
+    });
+
+
+function createSvgLogo(answers) {
+    let shape;
+    console.log(answers);
+    console.log(answers.shape);
+    // If user chooses Circle
+    if (answers.shape === 'Circle') {
+        // Make an instance of the Circle class 
+        const circle = new Circle(answers.color, answers.userInput, answers.textcolor);
+        //    assigning circle to shape
+        shape = circle
+        console.log('User Chose Circle');
+    }
+
+    // If user choses sqaure 
+    // Make an instance of the square class
+    // Assign Square to shape
+
+
+    // Call render method from my shape instance
+    return shape.render();
+    // Need to hoist up result to send it back 
+}
