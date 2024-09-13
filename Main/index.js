@@ -1,6 +1,6 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
-const { Circle } = require('./lib/shapes');
+const { Circle, Triangle, Rectangle } = require('./lib/shapes');
 
 // Function to create an SVG logo based on user input
 function createSvgLogo(shape, color, text) {
@@ -8,14 +8,14 @@ function createSvgLogo(shape, color, text) {
 
     // Determine the shape based on user input
     switch (shape.toLowerCase()) {
-        case 'Polyline':
-            shapeElement = `<polyline points="60, 110 65, 120 70, 115 75, 130 80, 125 85, 140 90, 135 95, 150 100, 145 fill="${color}" />`;
+        case 'Triangle':
+            shapeElement = `<polygon points="150, 18 244, 182 56, 182" fill="${this.color}" />`;
             break;
         case 'Circle':
             shapeElement = `<circle cx="25" cy="75" r="20" fill="${color}" />`;
             break;
         case 'Rectangle':
-            shapeElement = `<<rect x="60" y="10" rx="10" ry="10" width="30" height="30" fill="${color}" />`;
+            shapeElement = `<rect width="300" height="300" x="10" y="10" fill="${this.color}`;
             break;
         default:
             console.log('Invalid shape. Defaulting to circle.');
@@ -38,7 +38,7 @@ questions = [
         type: 'list',
         name: 'shape',
         message: 'Choose a shape for your SVG logo:',
-        choices: ['Polyline', 'Circle', 'Rectangle'],
+        choices: ['Triangle', 'Circle', 'Rectangle'],
     },
     {
         type: 'list',
@@ -97,7 +97,23 @@ function createSvgLogo(answers) {
         console.log('User Chose Circle');
     }
 
-    // If user choses sqaure 
+    // If user choses Triangle 
+    if (answers.shape === 'Triangle') {
+        // Make an instance of the Triangle class 
+        const triangle = new Triangle(answers.color, answers.userInput, answers.textcolor);
+        //    assigning circle to shape
+        shape = triangle
+        console.log('User Chose Triangle');
+    }
+
+    // If user chooses Rectangle
+    if (answers.shape === 'Rectangle') {
+        // Make an instance of the Polyline class 
+        const rectangle = new Rectangle(answers.color, answers.userInput, answers.textcolor);
+        //    assigning circle to shape
+        shape = rectangle
+        console.log('User Chose Rectangle');
+    }
     // Make an instance of the square class
     // Assign Square to shape
 

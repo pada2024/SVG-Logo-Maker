@@ -13,15 +13,22 @@ class Shape {
         this.color = color;
     }
 }
-//Todo: create Circle class that extends Shape and implements render method to return a string representing a circle with specified color
-class Polyline extends Shape {
+//Todo: create Triangle class that extends Shape and implements render method to return a string representing a Triangle with specified color
+class Triangle extends Shape {
     render() {
-        return `<polyline points="60, 110 65, 120 70, 115 75, 130 80, 125 85, 140 90, 135 95, 150 100, 145" fill="${this.color}" />`;
+        return `<svg height="220" width="500" xmlns="http://www.w3.org/2000/svg">
+
+  <polygon points="150, 18 244, 182 56, 182" fill="${this.color}" />
+  
+  <text x="150" y="125" font-size="60" text-anchor="middle" fill="${this.textcolor}">${this.text}</text>`
+   
+
+        
     }
     
 }
 
-//Todo: create Square class that extends Shape and implements render method to return a string representing a square with specified color
+//Todo: create Circle class that extends Shape and implements render method to return a string representing a Circle with specified color
 class Circle extends Shape {
     render() {
         return `<svg version="1.1" width="300" height="200" xmlns="http://www.w3.org/2000/svg">
@@ -34,15 +41,22 @@ class Circle extends Shape {
     }
     
 }
-//Todo: create Triangle class that extends Shape and implements render method to return a string representing a triangle with specified color
+//Todo: create Rectangle class that extends Shape and implements render method to return a string representing a Rectangle with specified color
 class Rectangle extends Shape {
     render() {
-        return `<rect x="60" y="10" rx="10" ry="10" width="30" height="30" fill="${this.color}" />`;
+        return `
+        <svg width="320" height="130" xmlns="http://www.w3.org/2000/svg">
+
+        <rect width="300" height="300" x="10" y="10" fill="${this.color}" />
+         <text x="150" y="125" font-size="60" text-anchor="middle" fill="${this.textcolor}">${this.text}</text>
+
+</svg>`
+        ;
     }
 }
 //Todo: export Polyline, Circle and Rectangle classes
 module.exports = {
-    Polyline,
+    Triangle,
     Circle,
     Rectangle
 };
