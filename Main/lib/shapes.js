@@ -2,7 +2,7 @@ const inquirer = require('inquirer');
 const fs = require('fs');
 
 
-// /Todo: create a Shape class with color property and setColor method to set color
+// Shape class with color property and setColor method to set color
 class Shape {
     constructor(color, text, textcolor) {
         this.color = color;
@@ -13,7 +13,7 @@ class Shape {
         this.color = color;
     }
 }
-//Todo: create Triangle class that extends Shape and implements render method to return a string representing a Triangle with specified color
+//Triangle class that extends Shape and implements render method to return a string representing a Triangle with specified color
 class Triangle extends Shape {
     render() {
         return `<svg height="220" width="500" xmlns="http://www.w3.org/2000/svg">
@@ -28,7 +28,7 @@ class Triangle extends Shape {
     
 }
 
-//Todo: create Circle class that extends Shape and implements render method to return a string representing a Circle with specified color
+//Circle class that extends Shape and implements render method to return a string representing a Circle with specified color
 class Circle extends Shape {
     render() {
         return `<svg version="1.1" width="300" height="200" xmlns="http://www.w3.org/2000/svg">
@@ -41,7 +41,7 @@ class Circle extends Shape {
     }
     
 }
-//Todo: create Rectangle class that extends Shape and implements render method to return a string representing a Rectangle with specified color
+//Rectangle class that extends Shape and implements render method to return a string representing a Rectangle with specified color
 class Rectangle extends Shape {
     render() {
         return `

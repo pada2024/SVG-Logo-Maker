@@ -6,7 +6,7 @@ const { Circle, Triangle, Rectangle } = require('./lib/shapes');
 function createSvgLogo(shape, color, text) {
     let shapeElement;
 
-    // Determine the shape based on user input
+    // Switch statement to determine the shape based on the different options presented to the user duting input 
     switch (shape.toLowerCase()) {
         case 'Triangle':
             shapeElement = `<polygon points="150, 18 244, 182 56, 182" fill="${this.color}" />`;
@@ -32,7 +32,7 @@ function createSvgLogo(shape, color, text) {
     return svgLogo;
 }
 
-// Prompt the user for shape, color, and text
+// Inquirer Prompt to prompt the user for shape, color, and text
 questions = [
     {
         type: 'list',
@@ -101,22 +101,19 @@ function createSvgLogo(answers) {
     if (answers.shape === 'Triangle') {
         // Make an instance of the Triangle class 
         const triangle = new Triangle(answers.color, answers.userInput, answers.textcolor);
-        //    assigning circle to shape
+        //    assigning triangle to shape
         shape = triangle
         console.log('User Chose Triangle');
     }
 
     // If user chooses Rectangle
     if (answers.shape === 'Rectangle') {
-        // Make an instance of the Polyline class 
+        // Make an instance of the Rectangle class 
         const rectangle = new Rectangle(answers.color, answers.userInput, answers.textcolor);
-        //    assigning circle to shape
+        //    assigning rectangle to shape
         shape = rectangle
         console.log('User Chose Rectangle');
     }
-    // Make an instance of the square class
-    // Assign Square to shape
-
 
     // Call render method from my shape instance
     return shape.render();
