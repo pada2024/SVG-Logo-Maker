@@ -14,12 +14,16 @@ A Node.js command-line application that takes in user input to generate a logo a
 
 Opeen the index.js file. Run node index, follow prompt and enter applicable details, you will have a svg logo printed based on your selections. 
 
+#Recording of functionality
+
+- https://drive.google.com/file/d/1YRiZwaIdFAdFzXZsXSOPjkKFmo5OxP1g/view
+
 #Screenshots
-![triangle](https://github.com/user-attachments/assets/387d7117-2513-4857-ad6e-13af10cb9273)
+- ![triangle](https://github.com/user-attachments/assets/387d7117-2513-4857-ad6e-13af10cb9273)
 
-![rectangle ](https://github.com/user-attachments/assets/bb8bcb35-06f8-468a-98b6-cf183faf4de7)
+- ![rectangle ](https://github.com/user-attachments/assets/bb8bcb35-06f8-468a-98b6-cf183faf4de7)
 
-![rectangle ](https://github.com/user-attachments/assets/53be2dd6-fbb7-4c88-8ed9-f1bf68978eee)
+- ![rectangle ](https://github.com/user-attachments/assets/53be2dd6-fbb7-4c88-8ed9-f1bf68978eee)
 
 #Resources
 
